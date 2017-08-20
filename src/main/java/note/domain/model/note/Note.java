@@ -28,10 +28,12 @@ public class Note extends note.domain.model.Entity {
     private Body body;
 
     @CreationTimestamp
+    @Setter // for testing
     // TODO: change type to LocalDateTime when Hibernate version that Spring Boot uses becomes 5.2.3+
     private Timestamp createdAt;
 
     @UpdateTimestamp
+    @Setter // for testing
     private Timestamp updatedAt;
 
     public Note setTitle(String title) {

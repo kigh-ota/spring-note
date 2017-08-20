@@ -18,7 +18,7 @@ public class PutController {
     private final NoteService noteService;
 
     @RequestMapping(path = "notes", method = RequestMethod.PUT)
-    public ResponseEntity<Void> putNotes(@RequestBody PutForm form) {
+    public ResponseEntity<Void> put(@RequestBody PutForm form) {
         Integer id = strToInt(form.getId());
         if (id == null) {
             Note note = noteService.add(form.getTitle(), form.getBody());
