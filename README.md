@@ -1,5 +1,7 @@
 # Note
 
+[![CircleCI](https://circleci.com/gh/kigh-ota/spring-note/tree/master.svg?style=shield)](https://circleci.com/gh/kigh-ota/spring-note/tree/master)
+
 ## Domain Models
 
 ```
