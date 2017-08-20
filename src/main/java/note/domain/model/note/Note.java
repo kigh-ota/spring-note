@@ -6,8 +6,11 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "note")
@@ -25,10 +28,11 @@ public class Note extends note.domain.model.Entity {
     private Body body;
 
     @CreationTimestamp
-    private LocalDateTime createdAt;
+    // TODO: change type to LocalDateTime when Hibernate version that Spring Boot uses becomes 5.2.3+
+    private Timestamp createdAt;
 
     @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private Timestamp updatedAt;
 
     public Note setTitle(String title) {
         this.title = new Title(title);

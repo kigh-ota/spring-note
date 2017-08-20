@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import note.domain.model.note.Note;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -12,8 +12,8 @@ public class NoteResource  {
     private String id;
     private String title;
     private String body;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private Date createdAt;
+    private Date updatedAt;
 
     public NoteResource(Note note) {
         id = Integer.toString(note.getId());

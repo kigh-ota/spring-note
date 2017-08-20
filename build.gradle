@@ -26,8 +26,6 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	// for applying @CreationTimestamp etc. to LocalDateTime
-//	compile('org.hibernate:hibernate-core:5.2.10.Final')
 //	compile('org.thymeleaf.extras:thymeleaf-extras-java8time:2.1.0.RELEASE')
 	compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.9')
 	compile('com.google.guava:guava:23.0')
