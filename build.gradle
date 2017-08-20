@@ -25,11 +25,16 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile('org.hibernate:hibernate-core:5.2.10.Final')
 //	compile('org.thymeleaf.extras:thymeleaf-extras-java8time:2.1.0.RELEASE')
-	compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
+	compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.9')
 	compile('com.google.guava:guava:23.0')
 	compileOnly('org.projectlombok:lombok:1.16.18')
-	runtime('org.postgresql:postgresql')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	runtime('org.postgresql:postgresql:9.4.1212.jre7')
+	testRuntime('com.h2database:h2:1.4.196')
+}
+
+test {
+	systemProperty("spring.profiles.active", "ci")
 }

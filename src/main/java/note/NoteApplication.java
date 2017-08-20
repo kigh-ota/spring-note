@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 // TODO: search notes by a tag
 // TODO: handle URIs in note body
 // TODO: link among notes
+// TODO: authorization
 // TODO: deploy
 // TODO: full text search
 @SpringBootApplication
