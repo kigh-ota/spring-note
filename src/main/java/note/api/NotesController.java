@@ -3,7 +3,7 @@ package note.api;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import note.domain.model.NoteRepository;
+import note.application.NoteService;
 import note.domain.model.note.Note;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,43 +21,37 @@ import java.util.stream.Collectors;
 @RequestMapping("notes")
 public class NotesController {
 
-    private final NoteRepository noteRepository;
+    private final NoteService noteService;
 
     @RequestMapping(path = "", method = RequestMethod.GET)
     public List<NoteResource> getNotes() {
-        return noteRepository.findAll().stream().map(note -> new NoteResource(note)).collect(Collectors.toList());
+        return noteService.getAll().stream().map(note -> new NoteResource(note)).collect(Collectors.toList());
     }
 
     @RequestMapping(path = "", method = RequestMethod.POST)
     public ResponseEntity<Void> postNotes(@RequestBody PostForm form) {
-        Note note = createNote(form.getTitle(), form.getBody());
+        Note note = noteService.add(form.getTitle(), form.getBody());
         return ResponseEntity.created(URI.create("http://localhost:8080/notes/" + note.getId())).build();
     }
 
     @RequestMapping(path = "", method = RequestMethod.PUT)
     public ResponseEntity<Void> putNotes(@RequestBody PutForm form) {
-        Note note = null;
-        try {
-            int id = Integer.parseInt(form.getId());
-            note = noteRepository.findOne(id);
-        } catch (NumberFormatException e) {
-            // no valid id specified
-        }
-        if (note == null) {
-            // create
-            note = createNote(form.getTitle(), form.getBody());
+        Integer id = strToInt(form.getId());
+        if (id == null) {
+            Note note = noteService.add(form.getTitle(), form.getBody());
             return ResponseEntity.created(URI.create("http://localhost:8080/notes/" + note.getId())).build();
         } else {
-            // update
-            note.setTitle(form.getTitle()).setBody(form.getBody());
-            noteRepository.save(note);
+            noteService.update(id, form.getTitle(), form.getBody());
             return ResponseEntity.noContent().build();
         }
     }
 
-    private Note createNote(String title, String body) {
-        Note note = new Note().setTitle(title).setBody(title);
-        return noteRepository.save(note);
+    private Integer strToInt(String s) {
+        try {
+            return Integer.valueOf(s);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 
     @Getter
