@@ -25,7 +25,7 @@ public class NoteService {
     }
 
     public Note add(String title, String body) {
-        Note note = new Note().setTitle(title).setBody(title);
+        Note note = new Note().setTitle(title).setBody(body);
         return noteRepository.save(note);
     }
 

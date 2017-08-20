@@ -2,6 +2,7 @@ package note.domain.model.note;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -16,6 +17,7 @@ public class Note extends note.domain.model.Entity {
 
     @Id
     @GeneratedValue
+    @Setter // for testing
     private Integer id;
 
     private Title title;
