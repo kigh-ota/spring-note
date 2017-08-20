@@ -39,4 +39,6 @@ public class Note extends note.domain.model.Entity {
         this.body = new Body(body);
         return this;
     }
+
+    // TODO: add getTags()
 }

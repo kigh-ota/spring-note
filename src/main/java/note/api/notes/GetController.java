@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// TODO: add controller tests
 @RestController
 @RequiredArgsConstructor
 public class GetController {
@@ -21,4 +22,5 @@ public class GetController {
         return noteService.getAll().stream().map(note -> new NoteResource(note)).collect(Collectors.toList());
     }
 
+    // TODO: add getSingle() for /notes/{id}
 }
