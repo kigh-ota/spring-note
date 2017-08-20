@@ -1,14 +1,11 @@
-package note.api;
+package note.api.notes;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Getter
-class PutForm {
-    @JsonProperty("id")
-    private String id;
-
+class PostForm {
     @JsonProperty("title")
     @NotEmpty
     private String title;
