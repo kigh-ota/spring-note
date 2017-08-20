@@ -30,3 +30,9 @@ $ pg_ctl -D /usr/local/var/postgres -l logfile start
 ```bash
 $ initdb /usr/local/var/postgres -E utf8
 ```
+
+### Make an executable .jar file
+
+```bash
+$ ./gradlew build
+```
